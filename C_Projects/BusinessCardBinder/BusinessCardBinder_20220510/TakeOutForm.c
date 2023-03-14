@@ -140,7 +140,7 @@ BOOL TakeOutForm_OnClose(HWND hWnd, WPARAM wParam, LPARAM lParam) {
 			(WPARAM)16, (LPARAM)businessCard.company.paxNumber);
 		SendMessage(GetDlgItem(hWnd, IDC_STATIC_EDITURL), WM_GETTEXT,
 			(WPARAM)128, (LPARAM)businessCard.company.url);
-		businessCard.next = NULL;
+		
 
 		//2.2.2 명함철 윈도우를 찾는다.
 		hBusinessCardBinder = FindWindow("#32770", "명함철");

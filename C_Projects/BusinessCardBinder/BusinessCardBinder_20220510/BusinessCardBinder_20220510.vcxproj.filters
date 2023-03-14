@@ -15,24 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="BusinessCardBinder_20220414.rc">
-      <Filter>리소스 파일</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="resource1.h">
+    <ClInclude Include="BusinessCardBinder.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkedList.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="BusinessCardBinderForm.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="TakeInForm.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="BusinessCardBinder.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="FindingForm.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TakeInForm.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="TakeOutForm.h">
@@ -40,20 +38,28 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BusinessCardBinderForm.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="TakeInForm.c">
+    <ClCompile Include="LinkedList.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="BusinessCardBinder.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="BusinessCardBinderForm.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="FindingForm.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TakeInForm.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="TakeOutForm.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BusinessCardBinder_20220414.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

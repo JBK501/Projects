@@ -175,7 +175,7 @@ BOOL FindingForm_OnSelectButtonClicked(HWND hWnd, WPARAM wParam, LPARAM lParam) 
 		//2.2 명함철 윈도우의 명함철에서 이동한다.
 		businessCardBinder = (BusinessCardBinder*)GetWindowLongPtr(hBusinessCardBinder, GWLP_USERDATA);
 
-		index = Move(businessCardBinder, indexes[current]);
+		index = BusinessCardBinder_Move(businessCardBinder, indexes[current]);
 
 		//2.3 명함철 윈도우의 명함에 출력한다.
 

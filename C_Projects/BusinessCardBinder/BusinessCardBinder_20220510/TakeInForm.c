@@ -173,7 +173,7 @@ BOOL TakeInForm_OnTakeInButtonClicked(HWND hWnd, WPARAM wParam, LPARAM lParam) {
 		strcpy(businessCard.company.telephoneNumber, telephoneNumber);
 		strcpy(businessCard.company.paxNumber, paxNumber);
 		strcpy(businessCard.company.url, url);
-		businessCard.next = NULL;
+		
 
 		//3.3 명함철 윈도우를 찾는다.
 		hBusinessCardBinder = FindWindow("#32770", "명함철");

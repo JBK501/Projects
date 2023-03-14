@@ -57,9 +57,11 @@ BOOL BusinessCardBinderForm_OnCommand(HWND hWnd, WPARAM wParam, LPARAM lParam) {
 	case IDC_BUTTON_TAKEOUT:
 		ret = BusinessCardBinderForm_OnTakeOutButtonClicked(hWnd, wParam, lParam);
 		break;
+#if 0
 	case IDC_BUTTON_ARRANGE:
 		ret = BusinessCardBinderForm_OnArrangeButtonClicked(hWnd, wParam, lParam);
 		break;
+#endif
 	case IDC_BUTTON_FIRST:
 		ret = BusinessCardBinderForm_OnFirstButtonClicked(hWnd, wParam, lParam);
 		break;
@@ -88,7 +90,7 @@ BOOL BusinessCardBinderForm_OnInitDialog(HWND hWnd, WPARAM wParam, LPARAM lParam
 
 	//1.1 명함철을 만든다.
 	businessCardBinder = (BusinessCardBinder*)malloc(sizeof(BusinessCardBinder));
-	Create(businessCardBinder);
+	BusinessCardBinder_Create(businessCardBinder);
 
 	SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG)businessCardBinder);
 
@@ -98,7 +100,7 @@ BOOL BusinessCardBinderForm_OnInitDialog(HWND hWnd, WPARAM wParam, LPARAM lParam
 	if (count > 0) {
 
 		//1.3 명함철에서 첫 번째 명함으로 이동한다.
-		current = First(businessCardBinder);
+		current = BusinessCardBinder_First(businessCardBinder);
 
 		//1.4 현재 명함을 출력한다.
 		SendMessage(GetDlgItem(hWnd, IDC_STATIC_EDITNAME), WM_SETTEXT,
@@ -133,7 +135,7 @@ BOOL BusinessCardBinderForm_OnFirstButtonClicked(HWND hWnd, WPARAM wParam, LPARA
 		businessCardBinder = (BusinessCardBinder*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
 
 		//2.1 명함철에서 첫 번째 명함으로 이동한다.
-		current = First(businessCardBinder);
+		current = BusinessCardBinder_First(businessCardBinder);
 
 		//2.2 현재 명함을 출력한다.
 		SendMessage(GetDlgItem(hWnd, IDC_STATIC_EDITNAME), WM_SETTEXT,
@@ -168,7 +170,7 @@ BOOL BusinessCardBinderForm_OnPreviousButtonClicked(HWND hWnd, WPARAM wParam, LP
 		businessCardBinder = (BusinessCardBinder*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
 
 		//3.1 명함철에서 이전 명함으로 이동한다.
-		current = Previous(businessCardBinder);
+		current = BusinessCardBinder_Previous(businessCardBinder);
 
 		//3.2 이전 명함을 출력한다.
 		SendMessage(GetDlgItem(hWnd, IDC_STATIC_EDITNAME), WM_SETTEXT,
@@ -203,7 +205,7 @@ BOOL BusinessCardBinderForm_OnNextButtonClicked(HWND hWnd, WPARAM wParam, LPARAM
 		businessCardBinder = (BusinessCardBinder*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
 
 		//4.1 명함철에서 다음 명함으로 이동한다.
-		current = Next(businessCardBinder);
+		current = BusinessCardBinder_Next(businessCardBinder);
 
 		//4.2 다음 명함을 출력한다.
 		SendMessage(GetDlgItem(hWnd, IDC_STATIC_EDITNAME), WM_SETTEXT,
@@ -238,7 +240,7 @@ BOOL BusinessCardBinderForm_OnLastButtonClicked(HWND hWnd, WPARAM wParam, LPARAM
 		businessCardBinder = (BusinessCardBinder*)GetWindowLongPtr(hWnd, GWLP_USERDATA);
 
 		//5.1 명함철에서 마지막 명함으로 이동한다.
-		current = Last(businessCardBinder);
+		current = BusinessCardBinder_Last(businessCardBinder);
 
 		//5.2 마지막 명함을 출력한다.
 		SendMessage(GetDlgItem(hWnd, IDC_STATIC_EDITNAME), WM_SETTEXT,
@@ -304,7 +306,7 @@ BOOL BusinessCardBinderForm_OnTakeOutButtonClicked(HWND hWnd, WPARAM wParam, LPA
 	return TRUE;
 }
 
-
+#if 0
 BOOL BusinessCardBinderForm_OnArrangeButtonClicked(HWND hWnd, WPARAM wParam, LPARAM lParam) {
 
 	BusinessCardBinder *businessCardBinder;
@@ -318,7 +320,7 @@ BOOL BusinessCardBinderForm_OnArrangeButtonClicked(HWND hWnd, WPARAM wParam, LPA
 		Arrange(businessCardBinder);
 
 		//9.2 명함철에서 첫 번째 명함으로 이동한다.
-		current = First(businessCardBinder);
+		current = BusinessCardBinder_First(businessCardBinder);
 
 		//9.3 현재 명함을 출력한다.
 		SendMessage(GetDlgItem(hWnd, IDC_STATIC_EDITNAME), WM_SETTEXT,
@@ -342,6 +344,7 @@ BOOL BusinessCardBinderForm_OnArrangeButtonClicked(HWND hWnd, WPARAM wParam, LPA
 	}
 	return TRUE;
 }
+#endif
 
 BOOL BusinessCardBinderForm_OnClose(HWND hWnd, WPARAM wParam, LPARAM lParam) {
 
@@ -356,7 +359,7 @@ BOOL BusinessCardBinderForm_OnClose(HWND hWnd, WPARAM wParam, LPARAM lParam) {
 		Save(businessCardBinder);
 
 		//10.2 명함철을 없앤다.
-		Destroy(businessCardBinder);
+		BusinessCardBinder_Destroy(businessCardBinder);
 
 		free(businessCardBinder);
 	}
